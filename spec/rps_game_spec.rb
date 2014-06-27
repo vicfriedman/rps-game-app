@@ -33,76 +33,76 @@ describe RPSGame do
 
   describe "#computer_play" do
     it "should return the computer's play" do
-      RPSGame.valid_play?(RPSGame.new(:rock).computer_play).should == true
+      expect(RPSGame.valid_play?(RPSGame.new(:rock).computer_play)).to eq(true)
     end
   end
 
   describe "#won?" do
     it "should return true if the player won" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :scissors }
+      allow(game).to receive(:computer_play) { :scissors }
 
-      game.won?.should == true
+      expect(game.won?).to eq(true)
     end
 
     it "should return false if the player lost" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :paper }
+      allow(game).to receive(:computer_play) { :paper }
 
-      game.won?.should == false
+      expect(game.won?).to eq(false)
     end
 
     it "should return false if the player tied" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :rock }
+      allow(game).to receive(:computer_play) { :rock }
 
-      game.won?.should == false
+      expect(game.won?).to eq(false)
     end
   end
 
   describe "#tied?" do
     it "should return true if the player tied" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :rock }
+      allow(game).to receive(:computer_play) { :rock }
 
-      game.tied?.should == true
+      expect(game.tied?).to eq(true)
     end
 
     it "should return false if the player won" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :scissors }
+      allow(game).to receive(:computer_play) { :scissors }
 
-      game.tied?.should == false
+      expect(game.tied?).to eq(false)
     end
 
     it "should return false if the player lost" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :paper }
+      allow(game).to receive(:computer_play) { :paper }
 
-      game.tied?.should == false
+      expect(game.tied?).to eq(false)
     end
   end
 
   describe "#lost?" do
     it "should return true if the player lost" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :paper }
+      allow(game).to receive(:computer_play) { :paper }
 
-      game.lost?.should == true
+      expect(game.lost?).to eq(true)
     end
 
     it "should return false if the player won" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :scissors }
+      allow(game).to receive(:computer_play) { :scissors }
 
-      game.lost?.should == false
+      expect(game.lost?).to eq(false)
     end
 
     it "should return false if the player tied" do
       game = RPSGame.new(:rock)
-      game.stub(:computer_play) { :rock }
+      allow(game).to receive(:computer_play) { :rock }
 
-      game.lost?.should == false
+      expect(game.lost?).to eq(false)
     end
   end
 end
