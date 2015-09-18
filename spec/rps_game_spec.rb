@@ -44,6 +44,7 @@ describe RPSGame do
     it "should return true if the player won" do
       game = RPSGame.new(:rock)
       allow(game).to receive(:computer_play) { :scissors }
+      # binding.pry
 
       expect(game.won?).to eq(true)
     end
